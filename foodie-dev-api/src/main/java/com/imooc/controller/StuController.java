@@ -1,0 +1,21 @@
+package com.imooc.controller;
+
+import com.imooc.service.StuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class StuController {
+
+    @Autowired
+    private StuService stuService;
+
+    //请求路径 localhost:8088/getStu/1001 这样需要映射而这里并没有所以返回404
+    //请求路径 localhost:8088/getStu?id=1001
+    @GetMapping("/getStu")
+    public Object getStu(Integer id){
+        return stuService.getStuInfo(id);
+    }
+
+}
