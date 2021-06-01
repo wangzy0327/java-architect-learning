@@ -1,4 +1,4 @@
-package com.imooc.service.com.imooc.service.impl;
+package com.imooc.service.impl;
 
 import com.imooc.service.StuService;
 import com.imooc.service.TestTransService;
