@@ -1,4 +1,4 @@
-package com.imooc.service.com.imooc.service.impl;
+package com.imooc.service.impl;
 
 import com.imooc.bo.UserBO;
 import com.imooc.enums.Sex;
@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public boolean queryUsernameIsExist(String username) {
+
         Example userExample = new Example(Users.class);
         Example.Criteria userCriteria = userExample.createCriteria();
 
@@ -50,6 +52,13 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Users createUser(UserBO userBO) {
+
+//        try {
+//            TimeUnit.SECONDS.sleep(3);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         String userId = sid.nextShort();
         Users user = new Users();
         user.setId(userId);
@@ -70,6 +79,27 @@ public class UserServiceImpl implements UserService {
         user.setUpdatedTime(new Date());
         usersMapper.insert(user);
         return user;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Users queryUserForLogin(String username,String password) {
+
+//        try {
+//            TimeUnit.SECONDS.sleep(2);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        Example userExample = new Example(Users.class);
+        Example.Criteria userCriteria = userExample.createCriteria();
+
+        userCriteria.andEqualTo("username",username);
+        userCriteria.andEqualTo("password",password);
+
+        Users result = usersMapper.selectOneByExample(userExample);
+
+        return result;
     }
 
 

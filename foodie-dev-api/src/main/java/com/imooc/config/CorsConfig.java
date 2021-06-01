@@ -13,7 +13,7 @@ public class CorsConfig{
 
     @Bean
     public CorsFilter corsFilter(){
-        // 1. 添加cors配置信息
+        // 1. 添加cors配置信息  设置跨域联调接收localhost:8080访问
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:8080");
 //        config.addAllowedOrigin("http://shop.z.mukewang.com:8080");
