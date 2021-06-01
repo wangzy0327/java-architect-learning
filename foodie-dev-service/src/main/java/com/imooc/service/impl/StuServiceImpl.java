@@ -1,4 +1,4 @@
-package com.imooc.service.com.imooc.service.impl;
+package com.imooc.service.impl;
 
 import com.imooc.mapper.StuMapper;
 import com.imooc.pojo.Stu;
