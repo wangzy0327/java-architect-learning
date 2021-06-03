@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ public class PassportController {
     private UserService userService;
 
     @ApiOperation(value = "用户名是否存在", notes = "用户名是否存在", httpMethod = "GET")
+    @Transactional(propagation = Propagation.SUPPORTS)
     @GetMapping("/usernameIsExist")
     public IMOOCJSONResult usernameIsExist(@RequestParam String username) {
         //1.判断用户名不能为空
@@ -43,6 +46,7 @@ public class PassportController {
     }
 
     @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
+    @Transactional(propagation = Propagation.REQUIRED)
     @PostMapping("/regist")
     public IMOOCJSONResult regist(@RequestBody UserBO userBO) {
 
@@ -75,6 +79,7 @@ public class PassportController {
     }
 
     @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
+    @Transactional(propagation = Propagation.SUPPORTS)
     @PostMapping("/login")
     public IMOOCJSONResult login(@RequestBody UserBO userBO,
                                  HttpServletRequest request,
@@ -120,6 +125,7 @@ public class PassportController {
     }
 
     @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
+    @Transactional(propagation = Propagation.SUPPORTS)
     @PostMapping("/logout")
     public IMOOCJSONResult logout(@RequestParam String userId,
                                  HttpServletRequest request,
