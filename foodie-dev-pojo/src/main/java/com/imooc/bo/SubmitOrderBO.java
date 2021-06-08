@@ -7,7 +7,7 @@ public class SubmitOrderBO {
     private String userId;
     private String itemSpecIds;
     private String addressId;
-    private String payMethod;
+    private Integer payMethod;
     private String leftMsg;
 
     public String getUserId() {
@@ -34,11 +34,11 @@ public class SubmitOrderBO {
         this.addressId = addressId;
     }
 
-    public String getPayMethod() {
+    public Integer getPayMethod() {
         return payMethod;
     }
 
-    public void setPayMethod(String payMethod) {
+    public void setPayMethod(Integer payMethod) {
         this.payMethod = payMethod;
     }
 
