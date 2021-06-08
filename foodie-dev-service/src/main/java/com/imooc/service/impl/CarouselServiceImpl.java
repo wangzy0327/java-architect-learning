@@ -3,7 +3,6 @@ package com.imooc.service.impl;
 import com.imooc.mapper.CarouselMapper;
 import com.imooc.pojo.Carousel;
 import com.imooc.service.CarouselService;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,7 +17,7 @@ public class CarouselServiceImpl implements CarouselService {
     @Autowired
     private CarouselMapper carouselMapper;
 
-    @ApiOperation(value = "获取首页轮播图列表", notes = "获取首页轮播图列表", httpMethod = "GET")
+
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<Carousel> queryAll(Integer isShow) {
