@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BasicController {
 
+    public static final String FOODIE_SHOPCART = "shopcart";
+
     /**
      * 默认评论显示页面数
      */
