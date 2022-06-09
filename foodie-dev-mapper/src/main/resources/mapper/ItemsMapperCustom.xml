@@ -61,7 +61,8 @@
         WHERE
             ii.is_main = 1
             <if test="paramsMap.keywords != null and paramsMap.keywords != '' ">
-                AND i.item_name like '%${paramsMap.keywords}%'
+                   AND i.item_name like CONCAT('%',#{paramsMap.keywords},'%')
+                   <!-- AND i.item_name like '%${paramsMap.keywords}%'-->
             </if>
             order by
             <choose>

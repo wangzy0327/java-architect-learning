@@ -18,3 +18,4 @@
 
 [整合log4j打印日志](doc/log4j.md)
 
+[mybatis动态SQL参数注入](doc/mybatis.md)
